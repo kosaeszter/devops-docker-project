@@ -2,11 +2,9 @@ import './stylesMainPage.css'
 
 function Products(props) {
     const products = props.data;
-    console.log(products);
     const isCart = props.isCart;
 
     async function handleAddToCart(productId) {
-        console.log(productId);
         const httpResponse = await fetch(`/api/shopping/${productId}`, {
             method: 'POST',
             headers: {
@@ -18,7 +16,6 @@ function Products(props) {
     }
 
     async function handleRemoveFromCart(productId){
-        console.log(productId);
         const httpResponse = await fetch(`/api/shopping/${productId}`,
         {
             method: 'DELETE'

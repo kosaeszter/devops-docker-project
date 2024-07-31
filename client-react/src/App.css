@@ -2,3 +2,21 @@ body {
     background-color: white;
     justify-content: center;
 }
+
+#order-button {
+    background-color: #0297b2;  
+    color: white; 
+    font-weight: bold;  
+    box-shadow: none; 
+    border: none;  
+    outline: none;  
+    padding: 20px 40px;  /* Increase padding (top-bottom, left-right) */
+    margin: 10px;  /* Add space around the button (top-right-bottom-left) */
+    font-size: 22px;  
+    width: auto;  /* Allow the button to adjust its width based on content */
+    height: auto;  /* Allow the button to adjust its height based on content */
+    border-radius: 5px;  /* Optional: Add rounded corners */
+    text-align: center;  /* Center text */
+    cursor: pointer;  /* Change cursor to pointer on hover */
+    display: inline-block;  /* Ensure proper spacing with other elements */
+}

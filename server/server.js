@@ -42,7 +42,6 @@ app.post('/api/shopping/:productId', async function (req, res) {
   const clickedProductId = parseInt(req.params.productId);
 
   SHOPPINGCART.push(clickedProductId);
-  console.log('shoppingcart', SHOPPINGCART);
   fillCart(SHOPPINGCART);
 
   res.status(201).json({
@@ -72,7 +71,6 @@ async function fillCart(SHOPPINGCART) {
 app.get('/api/shopping', async function (req, res) {
   const shoppingFile = await readCartJSONfile();
   const shoppingCart = shoppingFile.cart;
-  console.log('get shopping cart', shoppingCart);
   return res.json(shoppingCart);
 });
 
@@ -82,7 +80,6 @@ app.delete('/api/shopping/:productId', async function (req, res) {
   const clickedProductId = parseInt(req.params.productId);
 
   const deletedProduct = await deleteShoppingItemById(clickedProductId);
-  console.log(deletedProduct);
 
   return res.json(deletedProduct);
 });
@@ -109,18 +106,13 @@ async function deleteShoppingItemById(productId) {
 
 app.post('/api/customers', async function (req, res) {
   const profile = req.body;
-  console.log('reqBody', profile);
-
   const createdProfile = await createProfile(profile);
-  console.log(createdProfile);
-
   return res.json(createdProfile);
 });
 
 async function createProfile(profileToSave) {
   const customerFile = await readCustomerJSONfile(); // reads JSON
   const customers = customerFile.customers;
-  console.log(customers);
 
   profileToSave.id = generateCustomerId(customers); //generates ID
   customers.push(profileToSave); // adds to array of products
@@ -144,6 +136,14 @@ function generateCustomerId(customers) {
   }
   return maxId + 1;
 }
+
+app.get('/api/customers', async function (req, res) {
+  const customerFile = await readCustomerJSONfile();
+  const customer = customerFile.customers;
+  const lastCustomer = customer[customer.length-1]
+  console.log(lastCustomer);
+  return res.json(lastCustomer);
+});
 
 app.listen(8080, function () {
 

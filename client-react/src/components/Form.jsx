@@ -57,13 +57,14 @@ function Form() {
         setSubmitted(true)
     }
 
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 {inputfields.map((inputfield, index) => (
                     <Inputfields key={index} name={inputfield.name} type={inputfield.type} label={inputfield.label} onChange={handleChange} />
                 ))}
-                <button type='submit'>Submit</button>
+                <button type='submit'>Submit profile</button>
             </form>
         </div>
     )
