@@ -15,7 +15,7 @@ useEffect(() => {
     }, []);
 
 return (
-<div className='section' id='products-container'>
+<div className='section'>
     {cartItems && <Products data={cartItems} isCart={true}/>}
 </div>
 );

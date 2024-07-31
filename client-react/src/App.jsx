@@ -3,7 +3,9 @@ import Products from './components/Products';
 import Header from './components/Header';
 import Cart from './components/Cart';
 import Banner from './components/Banner';
+import Form from './components/Form';
 import { useState, useEffect } from 'react'
+
 
 
 function App() {
@@ -16,7 +18,6 @@ function App() {
     async function fetchProducts() {
       const response = await fetch('/api/products');
       const productList = await response.json();
-      console.log(productList);
       setProducts(productList);
     }
     fetchProducts();
@@ -38,7 +39,7 @@ function App() {
       <Header onCartButtonClick={handleCartButtonClick} view={view} />
       <Banner view={view} />
       {view === 'products' && products && <><Products data={products} isCart={false} /></>}
-      {view === 'cart' && <Cart />}
+      {view === 'cart' && <><Cart/><Form/></>}
     </div>
   );
 }

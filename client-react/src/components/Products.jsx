@@ -17,6 +17,18 @@ function Products(props) {
         console.log(await httpResponse.json());
     }
 
+    async function handleRemoveFromCart(productId){
+        console.log(productId);
+        const httpResponse = await fetch(`/api/shopping/${productId}`,
+        {
+            method: 'DELETE'
+        }
+    );
+
+    const deletedProduct = await httpResponse.json();
+    console.log('Deleted Product:', deletedProduct);
+    }
+
     return (
         <div>
             <div id='products-container'>
@@ -30,9 +42,12 @@ function Products(props) {
                             <p>Rating: {product.rating}</p>
                             <p>Description: {product.description}</p>
                         </div>
-                        <button onClick={() => handleAddToCart(product.id)}>
-                            {isCart ? 'Remove from cart' : 'Add to cart'}
-                        </button>
+                        {isCart ?
+                            (<button onClick={() => handleRemoveFromCart(product.id)}>
+                                Remove from cart </button>) : (
+                                <button onClick={() => handleAddToCart(product.id)}>
+                                    Add to cart </button>
+                            )}
                     </div>
                 )
                 )}
