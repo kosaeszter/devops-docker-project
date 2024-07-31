@@ -1,0 +1,121 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    display: flex;
+    /* Make card flex container */
+    flex-direction: column;
+    /* Arrange children in a column */
+    height: 100%;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card .content {
+    flex-grow: 1;
+    /* Make content take up remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
+
+#products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    /* gap between cards as needed */
+    padding: 16px;
+    /* padding around the product grid */
+    border-top: 2px solid #0297b2;
+}
+
+#main-banner-div {
+    width: 100%;
+    /* Make the div take up the full width of its container */
+    overflow: hidden;
+    /* Hide overflow content */
+    display: flex;
+    /* Use flexbox to center the image */
+    justify-content: center;
+    margin-bottom: 20px;
+    /* Add space below the banner div */
+    margin-top: 20px;
+
+}
+
+#main-banner {
+    width: 100%;
+    /* Make the image responsive */
+    height: auto;
+    /* Maintain the aspect ratio */
+    max-width: 1200px;
+    /* Set a maximum width for larger screens */
+    object-fit: cover;
+    /* Ensure the image covers the div without stretching */
+}
+
+#editor-button,
+#cart-button {
+    background-color: #0297b2;
+    color: white;
+    font-weight: bold;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    padding: 15px 30px;
+    /* Increase padding to make the button bigger */
+    margin-right: 20px;
+    /* Adjust margin for space between buttons */
+    font-size: 20px;
+    /* Optionally increase font size */
+    width: 150px;
+    /* Optionally set width */
+    height: 50px;
+    /* Optionally set height */
+}
+
+/* HEADER */
+#header {
+    display: flex;
+    /* Use flexbox for layout */
+    justify-content: space-between; /* Align items to the right */
+    align-items: center;
+    /* Vertically center items */
+    padding: 10px 20px;
+    /* Add some padding around the header */
+    border-bottom: 2px solid #0297b2;
+    /* Add a thin bottom border */
+}
+
+#logo {
+    width: auto;
+    /* Maintain the aspect ratio */
+    height: 150px;
+    /* Set the desired height */
+    max-width: 100%;
+    /* Ensure the image does not exceed the container's width */
+    object-fit: contain;
+    /* Ensure the entire image is visible without distortion */
+  }

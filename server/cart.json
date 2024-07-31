@@ -1,0 +1,31 @@
+{
+  "cart": [
+    {
+      "title": "Block magnets",
+      "price": "790",
+      "description": "Get a glimpse into these Hungarian blocks of apartments from the socialist era and get a whole set.",
+      "category": "Home decor",
+      "rating": "4.8",
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e3b6c483776985.5d489120b708c.jpg",
+      "id": 8
+    },
+    {
+      "title": "Bath Curtain",
+      "price": "4899",
+      "description": "The portable magic of Hungarian thermal baths in your home.",
+      "category": "Home decor",
+      "rating": "5.0",
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/925daa83776985.5d489120b229b.jpg",
+      "id": 7
+    },
+    {
+      "id": 3,
+      "title": "EggMap of Budapest",
+      "price": "6999",
+      "description": "Haven’t we all lost our nerves at least once by folding an oversized map on a sightseeing-tour? Often the real challenge comes when trying to find a hotspot or even to charge your phone in the city. EggMap is the most fun way to stroll around",
+      "category": "Office supply",
+      "rating": "4.3",
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ace38c13527595.55d3c86b7bf71.jpg"
+    }
+  ]
+}

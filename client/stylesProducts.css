@@ -1,0 +1,35 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.form-editor label {
+    display: block;
+    margin-bottom: 10px; /* space between input fields */
+}
+
+.form-editor .form-input {
+    width: 50%; /* Adjust as needed */
+    box-sizing: border-box;
+}
+
+/* Style the ul element to remove the default list markers */
+.list-group {
+    list-style-type: none; /* Remove the default list markers */
+    padding: 0; /* Remove default */
+    margin: 0; /* Remove default*/
+}
+
+/* Style each li element */
+.list-group-item {
+    margin-bottom: 10px; /* Add space between each li item */
+    padding: 10px; /* Add padding to items*/
+    border-bottom: 1px solid #090101; /* Add a thin bottom border */
+}
+
+.button-edit, .button-delete {
+    margin-left: 10px; /* Add space between the buttons */
+}
+
+.existing-products {
+    margin-top: 20px; /* Add some space above the existing products list */
+}

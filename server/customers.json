@@ -1,0 +1,67 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": {
+        "first": "zsuzsanna",
+        "middle": "none",
+        "last": "rabai"
+      },
+      "email": "zsuzsi.rabai@gmail.com",
+      "shipping": {
+        "country": "Poland",
+        "zip": "31-452",
+        "city": "krakow",
+        "address": "Pawla Wlodkowica"
+      },
+      "invoice": {
+        "country": "Poland",
+        "zip": "31-452",
+        "city": "krakow",
+        "address": "Pawla Wlodkowica"
+      }
+    },
+    {
+      "name": {
+        "first": "zsuzsanna",
+        "middle": "none",
+        "last": "rabai"
+      },
+      "email": "zsuzsi.rabai@gmail.com",
+      "shipping": {
+        "country": "Poland",
+        "zip": "31-452",
+        "city": "krakow",
+        "address": "Pawla Wlodkowica"
+      },
+      "invoice": {
+        "country": "Poland",
+        "zip": "31-452",
+        "city": "krakow",
+        "address": "Pawla Wlodkowica"
+      },
+      "id": 2
+    },
+    {
+      "name": {
+        "first": "zsuzsanna",
+        "middle": "none",
+        "last": "rabai"
+      },
+      "email": "zsuzsi.rabai@gmail.com",
+      "shipping": {
+        "country": "Poland",
+        "zip": "31-452",
+        "city": "krakow",
+        "address": "Pawla Wlodkowica"
+      },
+      "invoice": {
+        "country": "Hungary",
+        "zip": "2600",
+        "city": "Vác",
+        "address": "teglahaz ut 22"
+      },
+      "id": 3
+    }
+  ]
+}

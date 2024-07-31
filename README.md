@@ -1,0 +1,1 @@
+Dear Developer, have fun with creating this project from the absolute zero! No worries, you will only have a couple of nervous breakdowns while completing it. 
