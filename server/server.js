@@ -37,12 +37,14 @@ app.get('/api/products', async function (req, res) {
 
 const SHOPPINGCART = [];
 
+
 app.post('/api/shopping/:productId', async function (req, res) {
   //getting product id in body, push to cart the number, res shoppingCart
   const clickedProductId = parseInt(req.params.productId);
 
   SHOPPINGCART.push(clickedProductId);
   fillCart(SHOPPINGCART);
+  console.log('shoppingcart', SHOPPINGCART);
 
   res.status(201).json({
     success:true,
@@ -71,6 +73,7 @@ async function fillCart(SHOPPINGCART) {
 app.get('/api/shopping', async function (req, res) {
   const shoppingFile = await readCartJSONfile();
   const shoppingCart = shoppingFile.cart;
+  console.log('shopping cart to send', shoppingCart);
   return res.json(shoppingCart);
 });
 
@@ -95,6 +98,7 @@ async function deleteShoppingItemById(productId) {
     deletedProduct = products[index];
     products.splice(index, 1);
   }
+  console.log(deletedProduct);
 
   const fileContentToSave = JSON.stringify({ //stringifies to JSON saves to file 
     cart: products

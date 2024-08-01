@@ -12,7 +12,7 @@ function Products(props) {
                 'Content-Type': 'application/json'
             },
         });
-
+    
         await httpResponse.json();
     }
 
@@ -24,6 +24,7 @@ function Products(props) {
         );
 
         const deletedProduct = await httpResponse.json();
+        console.log(deletedProduct);
         onProductRemoved(productId);
     }
 

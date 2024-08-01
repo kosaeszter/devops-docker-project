@@ -27,6 +27,15 @@ function App() {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    async function fetchCart() {
+      const response = await fetch('/api/shopping');
+      const cartItems = await response.json();
+      setCart(cartItems);
+    }
+    fetchCart();
+  }, []);
+
   function handleCartButtonClick() {
     setView((prev) => {
       if (prev === 'cart') {
@@ -40,12 +49,15 @@ function App() {
 
   function handleSortClick() {
     if (!isSorted) {
-      const productsSorted = products.toSorted((a, b) => {
+      const productsAscending = products.toSorted((a, b) => {
         return parseInt(a.price) - parseInt(b.price)
       });
-      setProducts(productsSorted);
+      setProducts(productsAscending);
     } else {
-      handleBackClick()
+      const productsDescending = products.toSorted((a, b) => {
+        return parseInt(b.price) - parseInt(a.price)
+      });
+      setProducts(productsDescending);
     }
     setIsSorted((prev) => {
       return !prev
@@ -54,7 +66,6 @@ function App() {
 
 
   function handleBackClick() {
-    console.log(unsortedProducts);
     setProducts(unsortedProducts);
   }
 
@@ -66,14 +77,8 @@ function App() {
     setOrderPlacement(false);
   }
 
-  useEffect(() => {
-    async function fetchCart() {
-      const response = await fetch('/api/shopping');
-      const cartItems = await response.json();
-      setCart(cartItems);
-    }
-    fetchCart();
-  }, []);
+
+
 
 
   return (
@@ -82,7 +87,7 @@ function App() {
       <Banner view={view} />
       {view === 'products' && products && <><Products data={products} isCart={false} /></>}
       {view === 'cart' && <div><Cart /><Form /><div className='order'><button id='order-button' onClick={handlePlaceOrder}>Place order</button></div>
-        {orderPlacement && cart && <OrderConfirmation data={cart} onClose={handleCloseModal} />}</div>}
+        {orderPlacement && cart && <OrderConfirmation onClose={handleCloseModal} />}</div>}
     </div>
   );
 }

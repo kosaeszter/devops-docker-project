@@ -9,11 +9,11 @@ function Cart() {
     async function fetchCartItems() {
       const response = await fetch('/api/shopping');
       const cart = await response.json();
+      console.log(cart);
       setCartItems(cart);
     }
     fetchCartItems();
   }, []);
-
 
 
   function handleProductRemove(productId) { //gets id value from products (function is given as a props - child can give value to parent in this way)
@@ -23,6 +23,7 @@ function Cart() {
     if (index !== -1) { // gives -1 if not found 
       updatedCart.splice(index, 1);
     }
+    console.log(updatedCart);
     setCartItems(updatedCart);
   }
 
