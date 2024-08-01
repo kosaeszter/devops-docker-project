@@ -1,15 +1,6 @@
 {
   "cart": [
     {
-      "title": "Liberty bridge tablet stand",
-      "price": "3999",
-      "description": "Nothing compares to a relaxed summer evening on the iconic green bridge, overlooking the city.",
-      "category": "Home decor",
-      "rating": "4.5",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a24d3683776985.5d48af1349502.jpg",
-      "id": 14
-    },
-    {
       "title": "Bath Curtain",
       "price": "4899",
       "description": "The portable magic of Hungarian thermal baths in your home.",
@@ -17,6 +8,15 @@
       "rating": "5.0",
       "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/925daa83776985.5d489120b229b.jpg",
       "id": 7
+    },
+    {
+      "title": "Block magnets",
+      "price": "790",
+      "description": "Get a glimpse into these Hungarian blocks of apartments from the socialist era and get a whole set.",
+      "category": "Home decor",
+      "rating": "4.8",
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e3b6c483776985.5d489120b708c.jpg",
+      "id": 8
     }
   ]
 }

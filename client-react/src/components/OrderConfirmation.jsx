@@ -1,10 +1,11 @@
 import '../styles/OrderConfirmation.css'
 import { useState, useEffect } from 'react';
 
-function OrderConfirmation(props) { //array of objects
+function OrderConfirmation(props) {
     const cartItems = props.data;
 
-    let sum = null; //is it ok like this???
+    //derived state 
+    let sum = null;
     for (const item of cartItems) {
         sum += parseInt(item.price);
     }
@@ -28,10 +29,10 @@ function OrderConfirmation(props) { //array of objects
                 <p id='items'>Your items:</p>
                 {cartItems.map((cartItem, index) => (
                     <div key={index}>
-                        <h2>{cartItem.title}<span className="price-small">{`${cartItem.price} Ft`}</span> </h2>
+                        <h3 className='cart-items'>{cartItem.title}<span className="price-small">{`${cartItem.price} Ft`}</span> </h3>
                     </div>
                 ))}
-                <h2 id='total-price'>Total Price: {`${sum} Ft`}</h2>
+                <p id='total-price'>Total Price: {`${sum} Ft`}</p>
             </div>
         </div>
     )

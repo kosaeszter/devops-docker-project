@@ -10,17 +10,19 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  //initialising states
   const [products, setProducts] = useState(null);
   const [view, setView] = useState('products');
   const [orderPlacement, setOrderPlacement] = useState(false);
   const [cart, setCart] = useState(null);
+  const [isSorted, setIsSorted] = useState(false);
+  const [unsortedProducts, setUnsortedProducts] = useState(null);
 
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch('/api/products');
       const productList = await response.json();
       setProducts(productList);
+      setUnsortedProducts(productList);
     }
     fetchProducts();
   }, []);
@@ -34,6 +36,26 @@ function App() {
       }
     }
     );
+  }
+
+  function handleSortClick() {
+    if (!isSorted) {
+      const productsSorted = products.toSorted((a, b) => {
+        return parseInt(a.price) - parseInt(b.price)
+      });
+      setProducts(productsSorted);
+    } else {
+      handleBackClick()
+    }
+    setIsSorted((prev) => {
+      return !prev
+    });
+  }
+
+
+  function handleBackClick() {
+    console.log(unsortedProducts);
+    setProducts(unsortedProducts);
   }
 
   function handlePlaceOrder() {
@@ -56,7 +78,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Header onCartButtonClick={handleCartButtonClick} view={view} />
+      <Header onCartButtonClick={handleCartButtonClick} onSortClick={handleSortClick} onBackClick={handleBackClick} isSorted={isSorted} view={view} />
       <Banner view={view} />
       {view === 'products' && products && <><Products data={products} isCart={false} /></>}
       {view === 'cart' && <div><Cart /><Form /><div className='order'><button id='order-button' onClick={handlePlaceOrder}>Place order</button></div>

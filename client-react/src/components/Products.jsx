@@ -3,6 +3,7 @@ import '../styles/stylesMainPage.css'
 function Products(props) {
     const products = props.data;
     const isCart = props.isCart;
+    const onProductRemoved = props.onProductRemoved;
 
     async function handleAddToCart(productId) {
         const httpResponse = await fetch(`/api/shopping/${productId}`, {
@@ -12,18 +13,18 @@ function Products(props) {
             },
         });
 
-        console.log(await httpResponse.json());
+        await httpResponse.json();
     }
 
-    async function handleRemoveFromCart(productId){
+    async function handleRemoveFromCart(productId) {
         const httpResponse = await fetch(`/api/shopping/${productId}`,
-        {
-            method: 'DELETE'
-        }
-    );
+            {
+                method: 'DELETE'
+            }
+        );
 
-    const deletedProduct = await httpResponse.json();
-    console.log('Deleted Product:', deletedProduct);
+        const deletedProduct = await httpResponse.json();
+        onProductRemoved(productId);
     }
 
     return (

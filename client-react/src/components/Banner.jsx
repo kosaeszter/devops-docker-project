@@ -3,7 +3,7 @@ function Banner(props) {
 
     return (
         <div id='main-banner-div'>
-            <img id='main-banner' src = { view === 'products' ? './src/assets/panelWide.png' : './src/assets/cart.png'}>
+            <img id='main-banner' src = { view === 'products' ? './src/assets/panelextrawide.png' : './src/assets/cart.png'}>
             </img>
         </div>
     )

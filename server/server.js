@@ -141,7 +141,6 @@ app.get('/api/customers', async function (req, res) {
   const customerFile = await readCustomerJSONfile();
   const customer = customerFile.customers;
   const lastCustomer = customer[customer.length-1]
-  console.log(lastCustomer);
   return res.json(lastCustomer);
 });
 
