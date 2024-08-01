@@ -1,4 +1,4 @@
-import './stylesMainPage.css';
+import '../styles/stylesMainPage.css';
 
 function Header(props) {
     const view = props.view;

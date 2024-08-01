@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Inputfields from './Inputfields';
+import '../styles/styleForm.css';
 
 function Form() {
 
@@ -60,12 +61,15 @@ function Form() {
 
     return (
         <div>
+            <h2 id='form-title'>Please provide your shipping information</h2>
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
                 {inputfields.map((inputfield, index) => (
                     <Inputfields key={index} name={inputfield.name} type={inputfield.type} label={inputfield.label} onChange={handleChange} />
                 ))}
-                <button type='submit'>Submit profile</button>
+                <button type='submit'className="submit-button">Submit profile</button>
             </form>
+        </div>
         </div>
     )
 }

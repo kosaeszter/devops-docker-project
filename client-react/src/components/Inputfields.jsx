@@ -6,9 +6,9 @@ const value = props.value;
 const onChange = props.onChange;
 
 return (
-    <div>
-        <label>{label}</label>
-        <input name={name} type={type} value= {value} onChange= {onChange}></input>
+    <div className="input-field">
+        <label className="input-label" htmlFor={name}>{label}</label>
+        <input className="input-box" id={name} name={name} type={type} value= {value} onChange= {onChange}></input>
     </div>
 );
 }

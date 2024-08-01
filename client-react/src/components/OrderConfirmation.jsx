@@ -1,4 +1,4 @@
-import './OrderConfirmation.css'
+import '../styles/OrderConfirmation.css'
 import { useState, useEffect } from 'react';
 
 function OrderConfirmation(props) { //array of objects
@@ -24,13 +24,14 @@ function OrderConfirmation(props) { //array of objects
         <div className="modal">
             <div className="modal-content">
                 <span className="close" onClick={props.onClose}>x</span>
-                <p id='order-message'> Thank you for your order, <span className="name">{customer ? `${customer.firstName}` : ''}</span>!</p>
+                <h1 id='order-message'> Thank you for your order, <span className="name">{customer ? `${customer.firstName}` : ''}</span>!</h1>
+                <p id='items'>Your items:</p>
                 {cartItems.map((cartItem, index) => (
                     <div key={index}>
-                        <h3>{cartItem.title}<span className="price-small">{`${cartItem.price} Ft`}</span> </h3>
+                        <h2>{cartItem.title}<span className="price-small">{`${cartItem.price} Ft`}</span> </h2>
                     </div>
                 ))}
-                <h2>Total Price: {`${sum} Ft`}</h2>
+                <h2 id='total-price'>Total Price: {`${sum} Ft`}</h2>
             </div>
         </div>
     )

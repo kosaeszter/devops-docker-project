@@ -1,19 +1,16 @@
-import './App.css'
-import './components/OrderConfirmation.css'
+import './App.css';
 import Products from './components/Products';
 import Header from './components/Header';
 import Cart from './components/Cart';
 import Banner from './components/Banner';
 import Form from './components/Form';
 import OrderConfirmation from './components/OrderConfirmation';
-import { useState, useEffect } from 'react'
-
-
+import { useState, useEffect } from 'react';
 
 
 function App() {
 
-  //initialising state
+  //initialising states
   const [products, setProducts] = useState(null);
   const [view, setView] = useState('products');
   const [orderPlacement, setOrderPlacement] = useState(false);
@@ -56,13 +53,14 @@ function App() {
     fetchCart();
   }, []);
 
+
   return (
     <div className='App'>
       <Header onCartButtonClick={handleCartButtonClick} view={view} />
       <Banner view={view} />
       {view === 'products' && products && <><Products data={products} isCart={false} /></>}
-      {view === 'cart' && <><Cart /><Form /><button id='order-button' onClick={handlePlaceOrder}>Place order</button>
-        {orderPlacement && cart && <OrderConfirmation data={cart} onClose={handleCloseModal} />}</>}
+      {view === 'cart' && <div><Cart /><Form /><div className='order'><button id='order-button' onClick={handlePlaceOrder}>Place order</button></div>
+        {orderPlacement && cart && <OrderConfirmation data={cart} onClose={handleCloseModal} />}</div>}
     </div>
   );
 }

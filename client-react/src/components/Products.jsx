@@ -1,4 +1,4 @@
-import './stylesMainPage.css'
+import '../styles/stylesMainPage.css'
 
 function Products(props) {
     const products = props.data;

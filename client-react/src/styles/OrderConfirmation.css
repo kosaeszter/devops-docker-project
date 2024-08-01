@@ -48,5 +48,13 @@
   }
 
   #order-message {
+    font-size: 36px;
+  }
+
+  #items {
     font-size: 28px;
+  }
+
+  #order-price {
+    font-size: 36px;
   }
