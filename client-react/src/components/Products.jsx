@@ -4,6 +4,7 @@ function Products(props) {
     const products = props.data;
     const isCart = props.isCart;
     const onProductRemoved = props.onProductRemoved;
+    //no fetch in products, 
 
     async function handleAddToCart(productId) {
         const httpResponse = await fetch(`/api/shopping/${productId}`, {
@@ -27,6 +28,9 @@ function Products(props) {
         console.log(deletedProduct);
         onProductRemoved(productId);
     }
+    //products component = productList
+    //content into a new component can be used by product and cart to display
+    //child to parent 
 
     return (
         <div>

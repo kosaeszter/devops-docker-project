@@ -17,6 +17,8 @@ function App() {
   const [isSorted, setIsSorted] = useState(false);
   const [unsortedProducts, setUnsortedProducts] = useState(null);
 
+
+  //1 useeffect for 2 fetch
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch('/api/products');
