@@ -1,7 +1,7 @@
 {
-  "name": "ya-online-shop-javascript-schuschii",
+  "name": "online-shop",
   "version": "1.0.0",
-  "description": "Dear Developer, have fun with creating this project from the absolute zero! No worries, you will only have a couple of nervous breakdowns while completing it.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --ignore cart.json --ignore products.json --ignore customers.json server.js",
@@ -12,7 +12,9 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "express": "^4.19.2"
+    "dotenv": "^16.5.0",
+    "express": "^4.19.2",
+    "mongoose": "^8.14.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

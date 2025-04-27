@@ -1,81 +1,105 @@
 import express from 'express';
-import { readFile, writeFile } from "node:fs/promises";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import mongoose from 'mongoose';
+import dotenv from "dotenv";
+import Product from './db/product.model.js'; 
+import Cart from './db/cart.model.js';
+
 
 const app = express();
 app.use(express.json());
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+dotenv.config();
+const mongoUrl = process.env.MONGO_URL;
 
-const customersJsonPath = join(__dirname, 'customers.json');
-const productsJsonPath = join(__dirname, 'products.json');
-const cartJsonPath = join(__dirname, 'cart.json');
-
-async function readProductJSONfile() {
-  const fileContent = await readFile(productsJsonPath);
-  return JSON.parse(fileContent);
+if (!mongoUrl) {
+  console.error("Missing MONGO_URL environment variable");
+  process.exit(1);
 }
 
-async function readCartJSONfile() {
-  const fileContent = await readFile(cartJsonPath);
-  return JSON.parse(fileContent);
+async function connectToMongoDB() {
+  try {
+    await mongoose.connect(mongoUrl);
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("Error connecting to MongoDB:", err);
+    process.exit(1);
+  }
 }
 
-async function readCustomerJSONfile() {
-  const fileContent = await readFile(customersJsonPath);
-  return JSON.parse(fileContent);
-}
 
 // SHOPPING PROCESS
+
 app.get('/api/products', async function (req, res) {
-  const productsFile = await readProductJSONfile();
-  const products = productsFile.products;
-
-  return res.json(products);
+  try {
+    const products = await Product.find();
+    return res.json(products);
+  } catch (err) {
+    console.error("Error fetching products from MongoDB:", err);
+    return res.status(500).json({ message: "Error fetching products" });
+  }
 });
 
+//Add to cart 
+app.post('/api/shopping/:productId', async (req, res) => {
+  const productId = req.params.productId; // Get the productId from the URL parameter
+  console.log(productId);
+  const { count } = req.body; // Get the count (quantity) from the request body
+  console.log(count);
 
+  if (!count || count <= 0) {
+    return res.status(400).json({ message: 'Invalid count' });
+  }
 
+  try {
+    // Convert productId to an ObjectId
+    const objectIdProduct = new mongoose.Types.ObjectId(productId);
 
-app.post('/api/shopping/:productId', async function (req, res) {
-  //getting product id in body, push to cart the number, res shoppingCart
-  const clickedProductId = parseInt(req.params.productId);
+    // Check if the product exists in the Product collection
+    const product = await Product.findById(objectIdProduct);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+      // If no cart exists for the user, create a new cart
+      let cart = new Cart({ items: [] });
+    
+    // Check if the product already exists in the cart
+    const existingItemIndex = cart.items.findIndex(item => item.productId.toString() === objectIdProduct.toString());
 
-  
-  fillCart(clickedProductId);
-  // console.log('shoppingcart', SHOPPINGCART);
+    if (existingItemIndex > -1) {
+      // Product exists in cart, update the count
+      cart.items[existingItemIndex].count += count;
+    } else {
+      // Product does not exist in cart, add a new item
+      cart.items.push({ productId: objectIdProduct, count });
+    }
 
-  res.status(201).json({
-    success:true,
-    message:'ok'
-  });
+    // Save the updated cart
+    await cart.save();
+
+    res.status(201).json(cart);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
-// filtering from products.json, writing it to cart
-async function fillCart(clickedProductId) {
-  const productsFile = await readProductJSONfile();
-  const products = productsFile.products;
-
-  const cartFile = await readCartJSONfile();
-  const cart = cartFile.cart; 
-
-    const product = products.find(p => p.id === clickedProductId);
-    cart.push(product);
-
-  const fileContentToSave = JSON.stringify({ //stringifies to JSON saves to file 
-    cart: cart
-  }, null, 2);
-
-  await writeFile(cartJsonPath, fileContentToSave);
-}
-
+// Read cart 
 app.get('/api/shopping', async function (req, res) {
-  const shoppingFile = await readCartJSONfile();
-  const shoppingCart = shoppingFile.cart;
-  // console.log('shopping cart to send', shoppingCart);
-  return res.json(shoppingCart);
+  try {
+    const cart = await Cart.findOne().populate('items.productId'); // populate product info
+
+    if (!cart) {
+      return res.status(404).json({ message: 'Cart not found' });
+    }
+
+    return res.json(cart);
+  } catch (error) {
+    console.error('Error fetching cart:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
+
+/*
 
 //delete cart item
 app.delete('/api/shopping/:productId', async function (req, res) {
@@ -98,7 +122,6 @@ async function deleteShoppingItemById(productId) {
     deletedProduct = products[index];
     products.splice(index, 1);
   }
- // console.log(deletedProduct);
 
   const fileContentToSave = JSON.stringify({ //stringifies to JSON saves to file 
     cart: products
@@ -115,7 +138,7 @@ app.post('/api/customers', async function (req, res) {
 });
 
 async function createProfile(profileToSave) {
-  const customerFile = await readCustomerJSONfile(); // reads JSON
+  const customerFile = await readCustomerJSONfile();
   const customers = customerFile.customers;
 
   profileToSave.id = generateCustomerId(customers); //generates ID
@@ -144,14 +167,38 @@ function generateCustomerId(customers) {
 app.get('/api/customers', async function (req, res) {
   const customerFile = await readCustomerJSONfile();
   const customer = customerFile.customers;
-  const lastCustomer = customer[customer.length-1]
+  const lastCustomer = customer[customer.length - 1]
   return res.json(lastCustomer);
 });
 
-app.listen(8080, function () {
 
-  console.log(`Server is running at: http://localhost:8080`);
+*/
+
+
+
+
+
+// when server stops mongoose connection closes
+process.on('SIGINT', async () => {
+  console.log("Shutting down server...");
+  await mongoose.connection.close();
+  console.log("MongoDB connection closed.");
+  process.exit(0);
 });
+
+async function startServer() {
+  await connectToMongoDB();
+  
+  app.listen(8080, function () {
+    console.log(`Server is running at: http://localhost:8080`);
+  });
+}
+
+startServer().catch((err) => {
+  console.error("Error starting the server:", err);
+  process.exit(1);
+});
+
 
 
 
