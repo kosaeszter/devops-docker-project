@@ -79,10 +79,6 @@ function App() {
     setOrderPlacement(false);
   }
 
-
-
-
-
   return (
     <div className='App'>
       <Header onCartButtonClick={handleCartButtonClick} onSortClick={handleSortClick} onBackClick={handleBackClick} isSorted={isSorted} view={view} />

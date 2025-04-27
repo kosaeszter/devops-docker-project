@@ -1,112 +1,98 @@
-{
-  "products": [
+[
     {
-      "id": 3,
       "title": "EggMap of Budapest",
-      "price": "6999",
-      "description": "Haven’t we all lost our nerves at least once by folding an oversized map on a sightseeing-tour? Often the real challenge comes when trying to find a hotspot or even to charge your phone in the city. EggMap is the most fun way to stroll around",
+      "price": 6999,
+      "description": "Have we all lost our nerves at least once by folding an oversized map on a sightseeing-tour? Often the real challenge comes when trying to find a hotspot or even to charge your phone in the city. EggMap is the most fun way to stroll around",
       "category": "Office supply",
-      "rating": "4.3",
+      "rating": 4.3,
       "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ace38c13527595.55d3c86b7bf71.jpg"
     },
     {
       "title": "Bath Curtain",
-      "price": "4899",
+      "price": 4899,
       "description": "The portable magic of Hungarian thermal baths in your home.",
       "category": "Home decor",
-      "rating": "5.0",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/925daa83776985.5d489120b229b.jpg",
-      "id": 7
+      "rating": 5.0,
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/925daa83776985.5d489120b229b.jpg"
     },
     {
       "title": "Block magnets",
-      "price": "790",
+      "price": 790,
       "description": "Get a glimpse into these Hungarian blocks of apartments from the socialist era and get a whole set.",
       "category": "Home decor",
-      "rating": "4.8",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e3b6c483776985.5d489120b708c.jpg",
-      "id": 8
+      "rating": 4.8,
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e3b6c483776985.5d489120b708c.jpg"
     },
     {
       "title": "Urban scarfs",
-      "price": "3999",
+      "price": 3999,
       "description": "Get warm and fuzzy with the iconic public transport scarfs of Budapest shielding you from cold.",
       "category": "Clothing",
-      "rating": "4.5",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e34b0883776985.5d489120b67bf.jpg",
-      "id": 9
+      "rating": 4.5,
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e34b0883776985.5d489120b67bf.jpg"
     },
     {
       "title": "Chimney cake tape",
-      "price": "1090",
+      "price": 1090,
       "description": "A practical reminder of the delicious Hungarian sweet dough rolled in sugar",
       "category": "Fun",
-      "rating": "4.3",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/932a4783776985.5d48af134661e.jpg",
-      "id": 10
+      "rating": 4.3,
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/932a4783776985.5d48af134661e.jpg"
     },
     {
       "title": "KOVIUBI air freshener",
-      "price": "399",
+      "price": 399,
       "description": "The scent of pickled cucumber brings back childhood memories in every Hungarian.",
       "category": "Fun",
-      "rating": "5.0",
-      "image": "https://www.vibesmagazine.hu/wp-content/uploads/2017/12/koviubi-autoillatosito_2-1024x576.jpg",
-      "id": 11
+      "rating": 5.0,
+      "image": "https://www.vibesmagazine.hu/wp-content/uploads/2017/12/koviubi-autoillatosito_2-1024x576.jpg"
     },
     {
       "title": "Metrjoska",
-      "price": "2999",
+      "price": 2999,
       "description": "The metrjoska follows the same fun principle as the Russian doll, except here you can find the major transport wonders of Budapest, placed withint each other.",
       "category": "Fun",
-      "rating": "4.7",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cc12a883776985.5d489120b4dd0.jpg",
-      "id": 12
+      "rating": 4.7,
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cc12a883776985.5d489120b4dd0.jpg"
     },
     {
       "title": "Manhole Cover Lollipop",
-      "price": "599",
+      "price": 599,
       "description": "Metallic effect lollipops inspired bt the beautiful manhole cover ornaments from the streets of Budapest.",
       "category": "Fun",
-      "rating": "5.0",
-      "image": "https://www.vibesmagazine.hu/wp-content/uploads/2017/12/nyalokacsatornafedel_2-1024x768.jpg",
-      "id": 13
+      "rating": 5.0,
+      "image": "https://www.vibesmagazine.hu/wp-content/uploads/2017/12/nyalokacsatornafedel_2-1024x768.jpg"
     },
     {
       "title": "Liberty bridge tablet stand",
-      "price": "3999",
+      "price": 3999,
       "description": "Nothing compares to a relaxed summer evening on the iconic green bridge, overlooking the city.",
       "category": "Home decor",
-      "rating": "4.5",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a24d3683776985.5d48af1349502.jpg",
-      "id": 14
+      "rating": 4.5,
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a24d3683776985.5d48af1349502.jpg"
     },
     {
       "title": "Bpins",
-      "price": "2000",
+      "price": 2000,
       "description": "Turn the city upside down with these cute pins, perfect for your notes, post cards or photos.",
       "category": "Fun",
-      "rating": "4.5",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bf048e83776985.5d48af1348241.jpg",
-      "id": 15
+      "rating": 4.5,
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bf048e83776985.5d48af1348241.jpg"
     },
     {
       "title": "With love from Buda postcards",
-      "price": "599",
+      "price": 599,
       "description": "A fun set of match-maker postcards with emblematic Hungarian figures off the historical canvases, ready to mingle.",
       "category": "Fun",
-      "rating": "5.0",
-      "image": "https://www.vibesmagazine.hu/wp-content/uploads/2017/12/lilaruha-1.jpg",
-      "id": 16
+      "rating": 5.0,
+      "image": "https://www.vibesmagazine.hu/wp-content/uploads/2017/12/lilaruha-1.jpg"
     },
     {
       "title": "Frisbee Plates",
-      "price": "3459",
+      "price": 3459,
       "description": "Flying frisbee in the form of traditional Hungarian ceramic plates. Safest choice if you get tempted to throw antiqu plates around.",
       "category": "Fun",
-      "rating": "4.9",
-      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/acc11083776985.5d48af1346084.jpg",
-      "id": 17
+      "rating": 4.9,
+      "image": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/acc11083776985.5d48af1346084.jpg"
     }
   ]
-}

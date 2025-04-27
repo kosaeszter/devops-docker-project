@@ -6,18 +6,29 @@ function Cart() {
   const [cartItems, setCartItems] = useState(null);
 
 //container component - has the logic 
-//display component - does not handle th ebusiness logic, easily changeable
-  //enough 1 fetch in app - better optionm components can be chnageable more easily 
+//display component - does not handle the business logic, easily changeable
+//enough 1 fetch in app - better option components can be changeable more easily 
+
   useEffect(() => {
     async function fetchCartItems() {
       const response = await fetch('/api/shopping');
       const cart = await response.json();
-      console.log(cart);
-      setCartItems(cart);
-    }
-    fetchCartItems();
-  }, []);
-// filter - dependency array gets the state 
+      
+// Transform cart items to match Products component structure
+const transformedCart = cart.items.map(item => ({
+  id: item.productId._id, // Needed for Products component
+  name: item.productId.name,
+  price: item.productId.price,
+  image: item.productId.image,
+  // count: item.count, // uncomment if you want to use
+}));
+
+setCartItems(transformedCart);
+}
+
+fetchCartItems();
+}, []);
+
 
   function handleProductRemove(productId) { //gets id value from products (function is given as a props - child can give value to parent in this way)
     const updatedCart = [...cartItems];

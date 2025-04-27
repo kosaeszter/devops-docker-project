@@ -12,6 +12,9 @@ function Products(props) {
             headers: {
                 'Content-Type': 'application/json'
             },
+            body: JSON.stringify({
+                count: 1, // Set the default count to 1
+            }),
         });
     
         await httpResponse.json();
@@ -30,7 +33,7 @@ function Products(props) {
     }
     //products component = productList
     //content into a new component can be used by product and cart to display
-    //child to parent 
+    //child to parent
 
     return (
         <div>
@@ -48,7 +51,7 @@ function Products(props) {
                         {isCart ?
                             (<button onClick={() => handleRemoveFromCart(product.id)}>
                                 Remove from cart </button>) : (
-                                <button onClick={() => handleAddToCart(product.id)}>
+                                <button onClick={() => handleAddToCart(product._id)}>
                                     Add to cart </button>
                             )}
                     </div>
