@@ -20,17 +20,24 @@ function OrderConfirmation(props) {
             const response = await fetch('/api/shopping');
             const cart = await response.json();
             console.log(cart);
-            setCartItems(cart);
+
+            const transformedCart = cart.items.map(item => ({
+                title: item.productId.title,
+                price: item.productId.price,
+              }));
+
+            setCartItems(transformedCart);
         }
         fetchCartItems();
     }, []);
 
-    //derived state
-   let sum = null;
+
+
+    // Fix sum calculation
+    let sum = 0;
     for (const item of cartItems) {
         sum += parseInt(item.price);
     }
-    
 
     return (
         <div className="modal">

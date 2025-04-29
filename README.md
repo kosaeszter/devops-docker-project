@@ -37,8 +37,7 @@ This webshop offers Hungarian-inspired accessories for tourists. Built with Reac
     ```
 4. Populate the database:
     ```bash
-    cd ./server
-    npm run populate
+    node server/populate/populate.js
     ```
 5. Start the backend server:
     ```bash
