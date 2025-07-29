@@ -1,4 +1,4 @@
-import express from 'express';
+/*import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
 import Product from './db/product.model.js';
@@ -174,7 +174,29 @@ startServer().catch((err) => {
   console.error("Error starting the server:", err);
   process.exit(1);
 });
+*/
 
+import express from 'express';
+
+const app = express();
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+async function startServer() {
+  //await connectToMongoDB();
+
+  app.listen(8080, function () {
+    console.log(`Server is running at: http://localhost:8080`);
+  });
+}
+
+startServer().catch((err) => {
+  console.error("Error starting the server:", err);
+  process.exit(1);
+});
 
 
 
