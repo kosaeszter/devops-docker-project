@@ -2,7 +2,7 @@
   "name": "online-shop",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon --ignore cart.json --ignore products.json --ignore customers.json server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
