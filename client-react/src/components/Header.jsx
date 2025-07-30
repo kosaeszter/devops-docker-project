@@ -1,4 +1,5 @@
 import '../styles/stylesMainPage.css';
+import logo from '../assets/logo.png';
 
 function Header(props) {
     const view = props.view;
@@ -9,7 +10,7 @@ function Header(props) {
 
     return (
         <div id='header'>
-            <img src='./src/assets/logo.png' id='logo'></img>
+            <img src={logo} id='logo'></img>
             <div className='header-right' >
                 {view === 'products' && <button className='cart-button'onClick={onSortClick}>
                     {isSorted ? 'DESC' : 'SORT'}</button>}
