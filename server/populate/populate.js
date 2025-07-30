@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 import mongoose from "mongoose";
 import fs from "fs";
 import path from "path";
@@ -6,7 +5,6 @@ import Product from "../db/product.model.js";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-dotenv.config();
 
 const mongoUrl = process.env.MONGO_URL;
 
@@ -14,6 +12,7 @@ if (!mongoUrl) {
   console.error("Missing MONGO_URL environment variable");
   process.exit(1);
 }
+
 
 async function populateProducts() {
   try {

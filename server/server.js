@@ -1,6 +1,5 @@
-/*import express from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from "dotenv";
 import Product from './db/product.model.js';
 import Cart from './db/cart.model.js';
 import Customer from './db/customer.model.js';
@@ -9,13 +8,14 @@ import Customer from './db/customer.model.js';
 const app = express();
 app.use(express.json());
 
-dotenv.config();
+
 const mongoUrl = process.env.MONGO_URL;
 
 if (!mongoUrl) {
   console.error("Missing MONGO_URL environment variable");
   process.exit(1);
 }
+
 
 async function connectToMongoDB() {
   try {
@@ -27,6 +27,10 @@ async function connectToMongoDB() {
   }
 }
 
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
 
 // SHOPPING PROCESS
 
@@ -174,29 +178,7 @@ startServer().catch((err) => {
   console.error("Error starting the server:", err);
   process.exit(1);
 });
-*/
 
-import express from 'express';
-
-const app = express();
-app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
-
-async function startServer() {
-  //await connectToMongoDB();
-
-  app.listen(8080, function () {
-    console.log(`Server is running at: http://localhost:8080`);
-  });
-}
-
-startServer().catch((err) => {
-  console.error("Error starting the server:", err);
-  process.exit(1);
-});
 
 
 
