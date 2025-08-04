@@ -18,7 +18,6 @@ function App() {
   const [unsortedProducts, setUnsortedProducts] = useState(null);
 
 
-  //1 useeffect for 2 fetch
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch('/api/products');
@@ -84,7 +83,7 @@ function App() {
       <Header onCartButtonClick={handleCartButtonClick} onSortClick={handleSortClick} onBackClick={handleBackClick} isSorted={isSorted} view={view} />
       <Banner view={view} />
       {view === 'products' && products && <><Products data={products} isCart={false} /></>}
-      {view === 'cart' && <div><Cart /><Form /><div className='order'><button id='order-button' onClick={handlePlaceOrder}>Place order</button></div>
+      {view === 'cart' && <div><Cart cart={cart} setCart={setCart} /><Form /><div className='order'><button id='order-button' onClick={handlePlaceOrder}>Place order</button></div>
         {orderPlacement && cart && <OrderConfirmation onClose={handleCloseModal} />}</div>}
     </div>
   );

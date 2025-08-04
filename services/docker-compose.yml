@@ -1,38 +1,42 @@
-version: '3.9'
 services:
-  mongo:
+  mongo-product:
     image: mongo:latest
+    container_name: mongo-product
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
       - MONGO_INITDB_DATABASE=shop
-    ports:
-      - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+      - mongo-product-data:/data/db
+
+  mongo-customer:
+    image: mongo:latest
+    container_name: mongo-customer
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=customer
+    volumes:
+      - mongo-customer-data:/data/db
 
   product-cart-service:
     build: ./product-cart-service
     environment:
-      - MONGO_URL=mongodb://admin:password@mongo:27017/shop?authSource=admin
-    ports:
-      - "8080:8080"
+      - MONGO_URL=mongodb://admin:password@mongo-product:27017/shop?authSource=admin
     depends_on:
-      - mongo
+      - mongo-product
 
   customer-service:
     build: ./customer-service
     environment:
-      - MONGO_URL=mongodb://admin:password@mongo:27017/shop?authSource=admin
-    ports:
-      - "8081:8081"
+      - MONGO_URL=mongodb://admin:password@mongo-customer:27017/shop?authSource=admin
     depends_on:
-      - mongo
+      - mongo-customer
 
   nginx:
     image: nginx:alpine
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ../client-react/dist:/usr/share/nginx/html:ro
@@ -41,4 +45,5 @@ services:
       - customer-service
 
 volumes:
-  mongo-data:
+  mongo-product-data:
+  mongo-customer-data:
