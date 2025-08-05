@@ -1,10 +1,10 @@
 #!/bin/bash
 # chmod +x start.sh
 
-# Starting main services
-docker-compose up -d --build
+# Starting main services + scaling manually
+docker compose up -d --build --scale product-cart-service=2 --scale customer-service=2
 
-# Waiting for Mongo to be ready
+
 echo "Waiting for MongoDB to be ready..."
 sleep 5 
 

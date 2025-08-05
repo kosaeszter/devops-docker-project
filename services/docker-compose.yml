@@ -1,4 +1,5 @@
 services:
+  # --- Databases ---
   mongo-product:
     image: mongo:latest
     container_name: mongo-product
@@ -19,6 +20,7 @@ services:
     volumes:
       - mongo-customer-data:/data/db
 
+  # --- API Services (scaled manually) ---
   product-cart-service:
     build: ./product-cart-service
     environment:
@@ -33,6 +35,22 @@ services:
     depends_on:
       - mongo-customer
 
+  # --- NGINX Load Balancers (internal only) ---
+  product-nginx-lb:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/product-lb.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - product-cart-service
+
+  customer-nginx-lb:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/customer-lb.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - customer-service
+
+  # --- Main NGINX Entry Point ---
   nginx:
     image: nginx:alpine
     ports:
