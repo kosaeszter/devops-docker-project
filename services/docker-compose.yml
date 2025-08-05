@@ -4,9 +4,9 @@ services:
     image: mongo:latest
     container_name: mongo-product
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=shop
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_PRODUCT_DB}
     volumes:
       - mongo-product-data:/data/db
 
@@ -14,9 +14,9 @@ services:
     image: mongo:latest
     container_name: mongo-customer
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=customer
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_CUSTOMER_DB}
     volumes:
       - mongo-customer-data:/data/db
 
@@ -24,14 +24,14 @@ services:
   product-cart-service:
     build: ./product-cart-service
     environment:
-      - MONGO_URL=mongodb://admin:password@mongo-product:27017/shop?authSource=admin
+      - MONGO_URL=${MONGO_PRODUCT_URL}
     depends_on:
       - mongo-product
 
   customer-service:
     build: ./customer-service
     environment:
-      - MONGO_URL=mongodb://admin:password@mongo-customer:27017/shop?authSource=admin
+      - MONGO_URL=${MONGO_CUSTOMER_URL}
     depends_on:
       - mongo-customer
 
